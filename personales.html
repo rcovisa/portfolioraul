@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título del Proyecto</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+ /* Estilos para el menú */
+ .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+        .menu a:hover {
+            background-color: #555;
+            border-radius: 4px;
+        }
+        .back-arrow {
+            font-size: 18px; /* Tamaño de la flecha */
+        }
+
+        .container {
+            display: flex;
+            gap: 800px;
+        }
+        .thumbnails-container {
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .thumbnail {
+            width:200px;
+            height: 200px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .main-content {
+            flex: 1;
+            max-width: 800px;
+            
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        .description {
+            text-align: justify;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            display: block;
+            margin: 0 auto;
+            box-shadow: none;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+   
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .thumbnails-container {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+
+   
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <a href="./index.html" class="back-arrow">&larr; Volver atrás</a>
+        <div>
+          <a href="./index.html">Menú Principal</a>
+        
+       </div>
+    </div>
+
+    <div class="container">
+        <div class="thumbnails-container">
+            <div class="thumbnail" onclick="openLightbox('./fotos/boxer.jpg')">
+                <img src="./fotos/boxer.jpg" alt="Miniatura 1">
+            </div>
+            <div class="thumbnail" onclick="openLightbox('./fotos/brutalbold.jpg')">
+                <img src="./fotos/brutalbold.jpg" alt="Miniatura 2">
+            </div>
+            <div class="thumbnail" onclick="openLightbox('./fotos/univers.jpg')">
+                <img src="./fotos/univers.jpg" alt="Miniatura 3">
+            </div>
+            <div class="thumbnail" onclick="openLightbox('./fotos/editorialdos.jpg')">
+                <img src="./fotos/editorialdos.jpg" alt="Miniatura 3">
+            </div>
+            <div class="thumbnail" onclick="openLightbox('./fotos/editorialuno.jpg')">
+                <img src="./fotos/editorialuno.jpg" alt="Miniatura 3">
+            </div>
+            <div class="thumbnail" onclick="openLightbox('./fotos/collageciudad.jpg')">
+                <img src="./fotos/collageciudad.jpg" alt="Miniatura 3">
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1>Creaciones personales</h1>
+            <div class="description">
+                <p>Aquí os dejo diferentes proyectos personales que tienen como base el collage. La mayoría de ellos se centran en el collage, pero otros estan más centrados en explorar composiciones para carteles. Cada diseño es diferente intentando dar diferentes sensaciones.</p>
+                
+                
+
+
+                
+             </div>
+            </div>
+            <!-- ... (resto del contenido) ... -->
+        </div>
+    </div>
+
+    <div id="myLightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImage" src="" alt="Imagen en grande">
+    </div>
+
+    <script>
+        function openLightbox(imagePath) {
+            document.getElementById('lightboxImage').src = imagePath;
+            document.getElementById('myLightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('myLightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
